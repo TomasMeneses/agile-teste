@@ -1,0 +1,56 @@
+<div>
+  <div>
+    <div class="row">
+      <div class="col-md">
+        <span>Categoria: </span>
+
+        <select [(ngModel)]="selectValue1" (ngModelChange)="selectOne(selectValue1)">
+          <option value="1" >Roupa</option>
+          <option value="2">Comida</option>
+        </select>
+      </div>
+      <div class="col-md">
+        <span>Produto: </span>
+        <select *ngIf="!selectOneValue" [(ngModel)]="selectValue2" (ngModelChange)="selectTwo(selectValue2)" >
+          <option value="1">Fruta</option>
+          <option value="2">Carne</option>
+        </select>
+        <select *ngIf="selectOneValue" [(ngModel)]="selectValue2" (ngModelChange)="selectTwo(selectValue2)">
+          <option value="3">Camisa</option>
+          <option value="4">Boné</option>
+        </select>
+      </div>
+      <div class="col-md">
+        <span>Tipo: </span>
+        <select *ngIf="(!selectOneValue) && (selectValue2 == '1')" [(ngModel)]="selectValue3" (ngModelChange)="selectThree(selectValue3)" >
+          <option value="1">Morango</option>
+          <option value="2">Laranja</option>
+        </select>
+        <select *ngIf="((!selectOneValue) && (selectValue2 == '2')) " [(ngModel)]="selectValue3" (ngModelChange)="selectThree(selectValue3)">
+          <option value="3">Picanha</option>
+          <option value="4">Carne Moida</option>
+        </select>
+        <select *ngIf="((selectOneValue) && (selectValue2 == '3'))" [(ngModel)]="selectValue3" (ngModelChange)="selectThree(selectValue3)">
+          <option value="5">Camisa manga Longa</option>
+          <option value="6">Camiseta</option>
+        </select>
+        <select *ngIf="((selectOneValue) && (selectValue2 == '4')) " [(ngModel)]="selectValue3" (ngModelChange)="selectThree(selectValue3)">
+          <option value="7">Boné baseball</option>
+          <option value="8">Boné sport</option>
+        </select>
+      </div>
+    </div>
+    <div style="display: block">
+      <canvas
+        baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"
+      >
+      </canvas>
+    </div>
+  </div>
+</div>
